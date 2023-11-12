@@ -3,8 +3,6 @@
 
 ## DIGITAL BANK - A$EPAY
 
-## System Design for the final solution
-
 ## How to run
 
 Data is stored and handled by PostgreSQL. See docker-compose.yml:
