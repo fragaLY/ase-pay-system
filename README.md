@@ -1,7 +1,7 @@
 # Catalog Service
-[![Catalog Service CI/CD](https://github.com/fragaLY/catalog-service/actions/workflows/catalog-service.yml/badge.svg?branch=master)](https://github.com/fragaLY/catalog-service/actions/workflows/catalog-service.yml)
+[![Catalog Service CI/CD](https://github.com/fragaLY/asepay-system/actions/workflows/ase-pay-service.yml/badge.svg?branch=master)](https://github.com/fragaLY/asepay-system/actions/workflows/ase-pay-service.yml)
 
-## The catalog service is the aggregator for different providers.
+## The ASEPAY system is the aggregator for different providers.
 
 ## System Design for the final solution
 
@@ -13,57 +13,22 @@ Data is stored and handled by ELK. For caches could be used Redis, only Redis su
 version: "3.8"
 
 services:
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${STACK_VERSION}
-    container_name: elasticsearch
-    environment:
-      - xpack.security.enabled=false
-      - discovery.type=single-node
-    ulimits:
-      memlock:
-        soft: -1
-        hard: -1
-      nofile:
-        soft: 65536
-        hard: 65536
-    cap_add:
-      - IPC_LOCK
-    volumes:
-      - elasticsearch-data:/usr/share/elasticsearch/data
-    ports:
-      - ${ES_PORT}:9200
 
-  kibana:
-    container_name: kibana
-    image: docker.elastic.co/kibana/kibana:${STACK_VERSION}
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-    ports:
-      - ${KIBANA_PORT}:5601
-    depends_on:
-      - elasticsearch
-
-  redis:
-    image: redis:${REDIS_VERSION}
+  postgres:
+    image: postgres:16-alpine
     restart: always
     environment:
-      - ALLOW_EMPTY_PASSWORD=yes
-      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_USER_PASSWORD}
     ports:
-      - ${REDIS_PORT}:6379
-    command: redis-server --save 20 1 --loglevel warning
+      - ${PG_PORT}:5432
     volumes:
-      - cache:/data
-
-volumes:
-  elasticsearch-data:
-    driver: local
-  cache:
-    driver: local
+      - ./data:/var/lib/postgresql/data
 ```
 
 Feel free to run it to work localy. 
-To boot up the application use ```./gradlew bootRun``` command or pull the image ```docker pull fragaly/catalog-service:1.0.0-RC1```.
+To boot up the application use ```./gradlew bootRun``` command or pull the image ```docker pull fragaly/ase-system:1.0.0-RC1```.
 
 See the Open Api documentation to be familiar with service API:
 
@@ -164,14 +129,6 @@ components:
             format: "uri"
 ```
 
-### Client Side System Design
+### System Design
 
-![client-side](./static/amazon-like-system.png)
-
-### Management Side System Design
-
-![management-side](./static/amazon-like-management.png)
-
-### Data Migration High Level Design
-
-![migration](./static/amazon-like-migration.png)
+![system-design](./static/asepay.drawio.png)

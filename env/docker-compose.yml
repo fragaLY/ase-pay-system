@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      POSTGRES_DB: asepay
+      POSTGRES_USER: asepay_user
+      POSTGRES_PASSWORD: asepay_password
+    ports:
+      - 5432:5432
+    volumes:
+      - ./data:/var/lib/postgresql/data

@@ -4,14 +4,15 @@ plugins {
     id("org.springframework.boot") version "3.1.5"
     id("io.spring.dependency-management") version "1.1.3"
     id("com.google.cloud.tools.jib") version "3.4.0"
+    id("org.flywaydb.flyway") version "10.0.0"
 }
 
 group = "by.vk"
 version = "1.0.0-RC1"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
 }
 
 configurations {
@@ -28,35 +29,31 @@ repositories {
     mavenCentral()
 }
 
-extra["springCloudGcpVersion"] = "4.8.0"
 extra["springCloudVersion"] = "2022.0.4"
 
 dependencies {
     //region implementation
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework:spring-context-indexer")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
-    implementation("org.springframework.boot:spring-boot-starter-data-elasticsearch")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-data-redis-reactive")
-    implementation("org.springdoc:springdoc-openapi-starter-webflux-ui:2.2.0")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
     implementation("ch.qos.logback.contrib:logback-json-classic:0.1.5")
-    implementation("com.google.cloud:spring-cloud-gcp-starter")
     //endregion
-
-    //region test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.springframework.boot:spring-boot-testcontainers")
-    testImplementation("org.testcontainers:elasticsearch")
-    testImplementation("org.testcontainers:junit-jupiter")
+    //region lombok
+    annotationProcessor("org.projectlombok:lombok")
+    implementation("org.projectlombok:lombok")
+    //endregion
+    //region postgres
+    runtimeOnly("org.postgresql:postgresql")
     //endregion
 }
 
 dependencyManagement {
     imports {
-        mavenBom("com.google.cloud:spring-cloud-gcp-dependencies:${property("springCloudGcpVersion")}")
         mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
     }
 }
@@ -79,11 +76,11 @@ object JVMProps {
 jib {
     setAllowInsecureRegistries(false)
     to {
-        image = "fragaly/catalog-service"
+        image = "fragaly/asepay-system"
         tags = setOf("$version", "latest")
     }
     from {
-        image = "gcr.io/distroless/java17"
+        image = "gcr.io/distroless/java21-debian12"
     }
     container {
         jvmFlags = listOf(
