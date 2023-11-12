@@ -80,7 +80,7 @@ logging.level:
   reactor.netty.http.client: info
 
 springdoc:
-  show-actuator: true
+  show-actuator: false
   api-docs:
     enabled: true
     groups:

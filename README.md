@@ -31,6 +31,44 @@ To boot up the application use ```./gradlew bootRun``` command or pull the image
 
 Check that system is ready to receive the traffic: ```http://localhost:8080/actuator/health/readiness```
 
+To operate with the system use Swagger: ```http://localhost:8080/swagger-ui/index.html```
+
+### How to test
+
+There are predefined users in the system: ```User1, User2, User3```
+
+|Username | UserId |
+|---      | ---    |
+|User1    | 1      |
+|User2    | 2      |
+|User3    | 3      |
+
+User1 supported currencies and initial balances:
+
+|Currency | Balance |
+|---      | ---     |
+|USD      | 10001   |
+|EUR      | 200     |
+|BRL      | 300     |
+|ARS      | 400     |
+|UYU      | 500     |
+
+User2 supported currencies and initial balances:
+
+|Currency | Balance |
+|---      | ---     |
+|USD      | 1000    |
+|EUR      | 2000    |
+|BRL      | 3000    |
+|ARS      | 4000    |
+|UYU      | 5000    |
+
+User3 supported currencies and initial balances:
+
+|Currency | Balance |
+|---      | ---     |
+|USD      | 10000   |
+
 See the Open Api documentation to be familiar with service API:
 
 ```yaml
