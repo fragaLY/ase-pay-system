@@ -1,5 +1,5 @@
-# Catalog Service
-[![Catalog Service CI/CD](https://github.com/fragaLY/asepay-system/actions/workflows/ase-pay-service.yml/badge.svg?branch=master)](https://github.com/fragaLY/asepay-system/actions/workflows/ase-pay-service.yml)
+# ASEPAY Service
+[![ASE PAY Service CI/CD](https://github.com/fragaLY/ase-pay-system/actions/workflows/ase-pay-service.yml/badge.svg)](https://github.com/fragaLY/ase-pay-system/actions/workflows/ase-pay-service.yml)
 
 ## The ASEPAY system is the aggregator for different providers.
 

@@ -1,7 +1,6 @@
 package by.vk.ase.pay.wallet.payload;
 
 import by.vk.ase.pay.common.Currency;
-import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;

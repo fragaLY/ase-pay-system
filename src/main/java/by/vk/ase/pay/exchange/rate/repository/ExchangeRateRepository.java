@@ -21,12 +21,6 @@ public record ExchangeRateRepository() {
 
   private static final ConcurrentHashMap<CurrencyPair, BigDecimal> EXCHANGE_RATES;
 
-  @Positive(message = "The exchange rate between currencies should be greater for zero")
-  public BigDecimal exchangeRate(
-      @NotNull(message = "The currency pair for exchange rate should not be null") CurrencyPair pair) {
-    return EXCHANGE_RATES.get(pair);
-  }
-
   static {
     EXCHANGE_RATES = new ConcurrentHashMap<>();
 
@@ -59,6 +53,12 @@ public record ExchangeRateRepository() {
     EXCHANGE_RATES.put(new CurrencyPair(UYU, EUR), new BigDecimal("0.0200"));
     EXCHANGE_RATES.put(new CurrencyPair(UYU, BRL), new BigDecimal("0.1267"));
     EXCHANGE_RATES.put(new CurrencyPair(UYU, ARS), new BigDecimal("4.2937"));
+  }
+
+  @Positive(message = "The exchange rate between currencies should be greater for zero")
+  public BigDecimal exchangeRate(
+      @NotNull(message = "The currency pair for exchange rate should not be null") CurrencyPair pair) {
+    return EXCHANGE_RATES.get(pair);
   }
 
 }
