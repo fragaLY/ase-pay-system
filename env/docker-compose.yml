@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:15-alpine
     restart: always
     environment:
       - POSTGRES_USER=user
@@ -11,5 +11,3 @@ services:
       - POSTGRES_DB=asepay
     ports:
       - 5432:5432
-    volumes:
-      - ./data:/var/lib/postgresql/data

@@ -1,12 +1,12 @@
 CREATE SCHEMA IF NOT EXISTS asepay;
 
-CREATE TABLE asepay.user
+CREATE TABLE IF NOT EXISTS asepay."user"
 (
     id       SERIAL PRIMARY KEY,
     username VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE asepay.wallet
+CREATE TABLE IF NOT EXISTS asepay.wallet
 (
     id       UUID           NOT NULL,
     owner_id BIGINT         NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE asepay.wallet
     FOREIGN KEY (owner_id) REFERENCES asepay.user (id)
 );
 
-CREATE TABLE asepay.transaction
+CREATE TABLE IF NOT EXISTS asepay."transaction"
 (
     id                 UUID           NOT NULL PRIMARY KEY,
     sender_id          BIGINT         NOT NULL,
@@ -31,8 +31,6 @@ CREATE TABLE asepay.transaction
     update_date_time   TIMESTAMP      NOT NULL
 );
 
-CREATE EXTENSION IF NOT EXISTS "pgcrypto";
-
 -- Insert 3 users
 INSERT INTO asepay.user (username)
 VALUES ('User1');
@@ -43,20 +41,20 @@ VALUES ('User3');
 
 -- Insert wallets for User1
 INSERT INTO asepay.wallet (id, owner_id, currency, balance)
-VALUES (uuid_generate_v4(), 1, 'USD', 10001),
-       (uuid_generate_v4(), 1, 'EUR', 200),
-       (uuid_generate_v4(), 1, 'BRL', 300),
-       (uuid_generate_v4(), 1, 'ARS', 400),
-       (uuid_generate_v4(), 1, 'UYU', 500);
+VALUES (gen_random_uuid(), 1, 'USD', 10001),
+       (gen_random_uuid(), 1, 'EUR', 200),
+       (gen_random_uuid(), 1, 'BRL', 300),
+       (gen_random_uuid(), 1, 'ARS', 400),
+       (gen_random_uuid(), 1, 'UYU', 500);
 
 -- Insert wallets for User2
 INSERT INTO asepay.wallet (id, owner_id, currency, balance)
-VALUES (uuid_generate_v4(), 2, 'USD', 1000),
-       (uuid_generate_v4(), 2, 'EUR', 2000),
-       (uuid_generate_v4(), 2, 'BRL', 3000),
-       (uuid_generate_v4(), 2, 'ARS', 4000),
-       (uuid_generate_v4(), 2, 'UYU', 5000);
+VALUES (gen_random_uuid(), 2, 'USD', 1000),
+       (gen_random_uuid(), 2, 'EUR', 2000),
+       (gen_random_uuid(), 2, 'BRL', 3000),
+       (gen_random_uuid(), 2, 'ARS', 4000),
+       (gen_random_uuid(), 2, 'UYU', 5000);
 
 -- Insert wallets for User3 with only USD currency
 INSERT INTO asepay.wallet (id, owner_id, currency, balance)
-VALUES (uuid_generate_v4(), 3, 'USD', 10000);
+VALUES (gen_random_uuid(), 3, 'USD', 10000);

@@ -41,6 +41,7 @@ dependencies {
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
     implementation("ch.qos.logback.contrib:logback-json-classic:0.1.5")
+    implementation("org.flywaydb:flyway-core")
     //endregion
     //region lombok
     annotationProcessor("org.projectlombok:lombok")

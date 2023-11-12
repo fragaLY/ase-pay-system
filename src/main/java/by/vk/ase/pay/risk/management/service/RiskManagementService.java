@@ -26,7 +26,7 @@ public record RiskManagementService() {
   public RiskResponse analyze(RiskPayload payload) {
     log.info("[RISK MANAGEMENT] Starting analyzing transaction = [{}]", payload);
     try {
-      Thread.sleep(500);
+      Thread.sleep(1000);
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }

@@ -3,6 +3,8 @@ package by.vk.ase.pay.ledger.repository;
 import by.vk.ase.pay.common.Currency;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import java.math.BigDecimal;
@@ -28,9 +30,12 @@ public class Transaction {
   private Long senderId;
   private Long recipientId;
   private BigDecimal amount;
+  @Enumerated(EnumType.STRING)
   private Currency sourceCurrency;
+  @Enumerated(EnumType.STRING)
   private Currency targetCurrency;
   private BigDecimal exchangeRate;
+  @Enumerated(EnumType.STRING)
   private Status status;
   @CreatedDate
   private LocalDateTime creationDateTime;

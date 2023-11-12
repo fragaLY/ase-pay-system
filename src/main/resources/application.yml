@@ -43,6 +43,7 @@ spring:
         transaction:
           jta:
             platform: org.hibernate.engine.transaction.jta.platform.internal.AtomikosJtaPlatform
+        show_sql: false
   flyway:
     schemas: asepay
     table: schema_version

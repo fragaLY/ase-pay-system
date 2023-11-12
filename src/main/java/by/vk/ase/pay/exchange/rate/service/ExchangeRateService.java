@@ -29,7 +29,7 @@ public record ExchangeRateService(ExchangeRateRepository repository) {
         "[EXCHANGE RATE SERVICE] Requested exchange rate for transaction = [{}] between currencies = [{}]",
         payload.transactionId(), pair);
     try {
-      Thread.sleep(35);
+      Thread.sleep(100);
     } catch (InterruptedException e) {
       throw new RuntimeException(e);
     }

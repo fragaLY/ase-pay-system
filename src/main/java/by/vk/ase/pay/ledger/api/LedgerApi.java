@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "/api/v1/transfer", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/transfer", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 public record LedgerApi(LedgerService service) {
 
   @PostMapping
