@@ -7,6 +7,7 @@ import by.vk.ase.pay.ledger.api.payload.TransactionPayload;
 import by.vk.ase.pay.ledger.repository.Status;
 import by.vk.ase.pay.ledger.repository.Transaction;
 import by.vk.ase.pay.ledger.repository.TransactionRepository;
+import by.vk.ase.pay.risk.management.api.payload.RiskPayload;
 import by.vk.ase.pay.risk.management.service.RiskManagementService;
 import by.vk.ase.pay.wallet.payload.WalletPayload;
 import by.vk.ase.pay.wallet.service.WalletService;

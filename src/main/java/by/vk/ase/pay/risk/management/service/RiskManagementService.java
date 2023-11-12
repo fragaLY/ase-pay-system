@@ -1,6 +1,6 @@
 package by.vk.ase.pay.risk.management.service;
 
-import by.vk.ase.pay.ledger.service.RiskPayload;
+import by.vk.ase.pay.risk.management.api.payload.RiskPayload;
 import by.vk.ase.pay.risk.management.api.payload.RiskResponse;
 import by.vk.ase.pay.risk.management.api.payload.RiskType;
 import jakarta.validation.constraints.NotNull;

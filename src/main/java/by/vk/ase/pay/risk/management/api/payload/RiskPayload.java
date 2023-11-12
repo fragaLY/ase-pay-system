@@ -1,4 +1,4 @@
-package by.vk.ase.pay.ledger.service;
+package by.vk.ase.pay.risk.management.api.payload;
 
 import by.vk.ase.pay.common.Currency;
 import by.vk.ase.pay.ledger.repository.Status;
