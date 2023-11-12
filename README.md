@@ -28,7 +28,7 @@ services:
 ```
 
 Feel free to run it to work localy. 
-To boot up the application use ```./gradlew bootRun``` command or pull the image ```docker pull fragaly/ase-system:1.0.0-RC1```.
+To boot up the application use ```./gradlew bootRun``` command or pull the image ```docker pull fragaly/asepay-system```.
 
 See the Open Api documentation to be familiar with service API:
 
