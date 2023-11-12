@@ -13,7 +13,7 @@ version: "3.8"
 services:
 
   postgres:
-    image: postgres:16-alpine
+    image: postgres:15-alpine
     restart: always
     environment:
       POSTGRES_DB: "asepay"
@@ -21,8 +21,6 @@ services:
       POSTGRES_PASSWORD: "password"
     ports:
       - 5432:5432
-    volumes:
-      - ./data:/var/lib/postgresql/data
 ```
 
 Feel free to run it to work locally.
