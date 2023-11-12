@@ -6,9 +6,9 @@ services:
     image: postgres:16-alpine
     restart: always
     environment:
-      POSTGRES_DB: asepay
-      POSTGRES_USER: asepay_user
-      POSTGRES_PASSWORD: asepay_password
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=asepay
     ports:
       - 5432:5432
     volumes:

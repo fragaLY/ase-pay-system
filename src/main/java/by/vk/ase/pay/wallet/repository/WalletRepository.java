@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WalletRepository extends JpaRepository<Wallet, WalletPK> {
 
-  Optional<Wallet> findByOwnerIdAndCurrency(Long ownerId, Currency currency);
+  Optional<Wallet> findByWalletPK_OwnerIdAndWalletPK_Currency(Long ownerId, Currency currency);
 
 }

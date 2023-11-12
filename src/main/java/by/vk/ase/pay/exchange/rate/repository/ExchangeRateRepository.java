@@ -17,7 +17,7 @@ import org.springframework.stereotype.Repository;
  * The "mock" of exchange rate repository.
  */
 @Repository
-public record ExchangeRateRepository() {
+public class ExchangeRateRepository {
 
   private static final ConcurrentHashMap<CurrencyPair, BigDecimal> EXCHANGE_RATES;
 

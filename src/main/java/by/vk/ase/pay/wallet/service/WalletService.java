@@ -41,7 +41,7 @@ public class WalletService {
     log.info("[WALLET SERVICE] Starting processing money transferring for payload = [{}]", payload);
     var amountInTargetCurrency = payload.amount().multiply(payload.exchangeRate())
         .setScale(SCALE_OF_TWO, RoundingMode.HALF_UP);
-    var senderWallet = repository.findByOwnerIdAndCurrency(payload.senderId(),
+    var senderWallet = repository.findByWalletPK_OwnerIdAndWalletPK_Currency(payload.senderId(),
         payload.sourceCurrency());
 
     if (senderWallet.isEmpty()) {
@@ -63,7 +63,8 @@ public class WalletService {
           "Insufficient sender's funds");
     }
 
-    var recipientWallet = repository.findByOwnerIdAndCurrency(payload.recipientId(),
+    var recipientWallet = repository.findByWalletPK_OwnerIdAndWalletPK_Currency(
+        payload.recipientId(),
         payload.targetCurrency());
 
     if (recipientWallet.isEmpty()) {

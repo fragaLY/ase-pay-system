@@ -29,14 +29,13 @@ repositories {
     mavenCentral()
 }
 
-extra["springCloudVersion"] = "2022.0.4"
-
 dependencies {
     //region implementation
     annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
     implementation("org.springframework:spring-context-indexer")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    implementation("org.springframework.boot:spring-boot-starter-jta-atomikos:2.7.17")
     implementation("org.springframework.boot:spring-boot-starter-validation")
     implementation("org.springframework.boot:spring-boot-starter-actuator")
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
@@ -50,12 +49,6 @@ dependencies {
     //region postgres
     runtimeOnly("org.postgresql:postgresql")
     //endregion
-}
-
-dependencyManagement {
-    imports {
-        mavenBom("org.springframework.cloud:spring-cloud-dependencies:${property("springCloudVersion")}")
-    }
 }
 
 tasks.withType<Test> {
