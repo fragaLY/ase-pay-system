@@ -25,7 +25,7 @@ services:
 
 Feel free to run it to work locally.
 
-To boot up the application use ```./gradlew bootRun``` command or pull the image ```docker pull fragaly/asepay-system```.
+To boot up the application use ```./gradlew bootRun``` command.
 
 Check that system is ready to receive the traffic: ```http://localhost:8080/actuator/health/readiness```
 
